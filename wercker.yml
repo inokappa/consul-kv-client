@@ -1,8 +1,10 @@
 box: ruby
 build:
   steps:
-    - rvm-use:
-        version: ruby-2.1.1    
+- script:
+        name: bundle install
+        code: |
+          bundle install
     - script:
         name: rake
         code: |
