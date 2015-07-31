@@ -1,0 +1,44 @@
+box: ubuntu
+build:
+  steps:
+    - script:
+        name: create consul directory and export PATH
+        code: |
+          mkdir -p $HOME/consul
+          export PATH=$PATH:$HOME/consul
+    - script:
+        name: install wget / curl / unzip / ruby
+        code: |
+          apt-get update
+          apt-get -y -qq install git wget unzip curl ruby ruby-dev
+    - script:
+        name: download consul
+        code: |
+          cd $HOME/consul 
+          wget https://dl.bintray.com/mitchellh/consul/0.5.2_linux_amd64.zip
+          unzip 0.5.2_linux_amd64.zip
+          rm 0.5.2_linux_amd64.zip
+    - script:
+        name: run consul 
+        code: |
+          consul agent \
+          -server \
+          -bootstrap-expect 1 \
+          -data-dir /tmp/consul &
+    - script:
+        name: bundle install
+        code: |
+          gem install bundler --no-ri --no-rdoc -V
+          bundle install
+    - script:
+        name: rake
+        code: |
+          rake
+    
+  after-steps:
+    - sherzberg/slack-notify:
+        subdomain: $SLACK_TEAM
+        token: $SLACK_TOKEN
+        channel: $SLACK_CHANNEL
+        username: wercker
+        icon_url: https://avatars3.githubusercontent.com/u/1695193?s=140
