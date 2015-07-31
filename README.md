@@ -1,4 +1,5 @@
 # ConsulKvClient
+[![wercker status](https://app.wercker.com/status/bd257f583aaaa0dfb337b5d540170063/s "wercker status")](https://app.wercker.com/project/bykey/bd257f583aaaa0dfb337b5d540170063)
 
 Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/consul_kv_client`. To experiment with that code, run `bin/console` for an interactive prompt.
 

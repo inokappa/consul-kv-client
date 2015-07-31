@@ -2,6 +2,30 @@ box: ruby
 build:
   steps:
     - script:
+        name: create consul directory and export PATH
+        code: |
+          mkdir -p $HOME/consul
+          export PATH=$PATH:$HOME/consul
+    - script:
+        name: install wget / curl / unzip
+        code: |
+          apt-get update
+          apt-get -y -qq install wget unzip curl
+    - script:
+        name: download consul
+        code: |
+          cd $HOME/consul 
+          wget https://dl.bintray.com/mitchellh/consul/0.5.2_linux_amd64.zip
+          unzip 0.5.2_linux_amd64.zip
+          rm 0.5.2_linux_amd64.zip
+    - script:
+        name: run consul plan
+        code: |
+          consul agent \
+          -server \
+          -bootstrap-expect 1 \
+          -data-dir /tmp/consul &
+    - script:
         name: bundle install
         code: |
           bundle install
