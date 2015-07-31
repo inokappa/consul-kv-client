@@ -14,29 +14,24 @@ module ConsulKvClient
         uri = 'http://' + @args[0] + '/v1/kv/?recurse'
         res = open(uri)
         code, message = res.status
-      rescue => ex
-        puts(ex.message)
+      #rescue => ex
+      #  puts(ex.message)
       ensure
         return res
       end
     end
 
     def listkv
-      begin
-        res_json = JSON.parse(http_request.read)
+      if http_request != nil
         rows = []
-        res_json.each do |value|
+        JSON.parse(http_request.read).each do |value|
           rows << ["#{value['Key']}" ,"#{Base64.decode64(value['Value'])}"]
         end
-      rescue => ex
-        puts(ex.message)
-      ensure
-        if rows != nil
-          table = Terminal::Table.new :headings => ['Key', 'Value'], :rows => rows
-          puts table
-        else
-          puts "KV data does not exists."
-        end
+      end
+
+      if rows != nil
+        table = Terminal::Table.new :headings => ['Key', 'Value'], :rows => rows
+        # puts table
       end
     end
 
