@@ -19,7 +19,7 @@ build:
           unzip 0.5.2_linux_amd64.zip
           rm 0.5.2_linux_amd64.zip
     - script:
-        name: run consul plan
+        name: run consul 
         code: |
           consul agent \
           -server \
@@ -28,6 +28,7 @@ build:
     - script:
         name: bundle install
         code: |
+          gem install bundler --no-ri --no-rdoc -V
           bundle install
     - script:
         name: rake
