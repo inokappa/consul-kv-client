@@ -1,5 +1,5 @@
 require "consul_kv_client/version"
-require "consul_kv_client/list_kv"
+require "consul_kv_client/kv_client"
 
 module ConsulKvClient
   class << self

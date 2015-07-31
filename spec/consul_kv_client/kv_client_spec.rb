@@ -3,7 +3,7 @@ require "spec_helper"
 RSpec.describe ConsulKvClient::KvClient do
   describe "# No KVS data" do
     before do
-      system("curl -s -X DELETE http://localhost:8500/v1/kv/foo/key1 2>&1 > /dev/null")
+      system("curl -s -X DELETE http://localhost:8500/v1/kv/?recurse 2>&1 > /dev/null")
     end
     context "access KVS" do
       subject { ConsulKvClient::KvClient.new(["127.0.0.1:8500"]).http_request }
