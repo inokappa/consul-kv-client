@@ -1,0 +1,17 @@
+box: wercker/ruby
+build:
+  steps:
+    - rvm-use:
+        version: ruby-2.1.1    
+    - script:
+        name: rake
+        code: |
+          rake
+    
+  after-steps:
+    - sherzberg/slack-notify:
+        subdomain: $SLACK_TEAM
+        token: $SLACK_TOKEN
+        channel: $SLACK_CHANNEL
+        username: wercker
+        icon_url: https://avatars3.githubusercontent.com/u/1695193?s=140
