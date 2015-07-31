@@ -1,4 +1,4 @@
-box: ruby
+box: ubuntu
 build:
   steps:
     - script:
@@ -7,10 +7,10 @@ build:
           mkdir -p $HOME/consul
           export PATH=$PATH:$HOME/consul
     - script:
-        name: install wget / curl / unzip
+        name: install wget / curl / unzip / ruby
         code: |
           apt-get update
-          apt-get -y -qq install wget unzip curl
+          apt-get -y -qq install wget unzip curl ruby ruby-devel
     - script:
         name: download consul
         code: |
