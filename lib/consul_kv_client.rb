@@ -5,8 +5,7 @@ module ConsulKvClient
   class << self
     def run(args)
       list = KvClient.new(args)
-      list.http_request
-      list.listkv
+      puts list.listkv
     end
   end
 end
