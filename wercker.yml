@@ -1,7 +1,7 @@
 box: ruby
 build:
   steps:
-- script:
+    - script:
         name: bundle install
         code: |
           bundle install
