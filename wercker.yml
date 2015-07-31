@@ -10,7 +10,7 @@ build:
         name: install wget / curl / unzip / ruby
         code: |
           apt-get update
-          apt-get -y -qq install wget unzip curl ruby ruby-dev
+          apt-get -y -qq install git wget unzip curl ruby ruby-dev
     - script:
         name: download consul
         code: |
