@@ -52,4 +52,9 @@ RSpec.describe ConsulKvClient::KvClient do
     end
 
   end
+
+  after(:all) do
+    system("curl -s -X DELETE http://localhost:8500/v1/kv/?recurse 2>&1 > /dev/null")
+  end
+
 end
