@@ -26,6 +26,11 @@ build:
           -bootstrap-expect 1 \
           -data-dir /tmp/consul &
     - script:
+        name: check consul 
+        code: |
+          consul members 
+          curl -s localhost:8500/v1/status/leader
+    - script:
         name: bundle install
         code: |
           gem install bundler --no-ri --no-rdoc -V
