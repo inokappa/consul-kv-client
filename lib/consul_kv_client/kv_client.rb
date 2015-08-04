@@ -33,17 +33,15 @@ module ConsulKvClient
 
       if rows != nil
         table = Terminal::Table.new :headings => ['Key', 'Value'], :rows => rows
-        puts table
       end
     end
 
     def putkv
       begin
-        puts 'Action: ' + @args[1]
-        puts 'Key: ' + @args[2]
-        puts 'Value: ' + @args[3]
+        # puts 'Action: ' + @args[1]
+        # puts 'Key: ' + @args[2]
+        # puts 'Value: ' + @args[3]
         res = RestClient.put 'http://' + @args[0] + '/v1/kv/' + @args[2], @args[3], :content_type => 'text/plain'
-        puts res 
       rescue => e
         puts (e.message)
       end
@@ -51,10 +49,9 @@ module ConsulKvClient
 
     def deletekv
       begin
-        puts 'Action: ' + @args[1]
-        puts 'Key: ' + @args[2]
+        # puts 'Action: ' + @args[1]
+        # puts 'Key: ' + @args[2]
         res = RestClient.delete 'http://' + @args[0] + '/v1/kv/' + @args[2]
-        puts res
       rescue => e
         puts (e.message)
      end

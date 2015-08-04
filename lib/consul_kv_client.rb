@@ -6,11 +6,11 @@ module ConsulKvClient
     def run(args)
       client = KvClient.new(args)
       if args[1] == 'list'
-        client.listkv
+        puts client.listkv
       elsif args[1] == 'put'
-        client.putkv
+        puts client.putkv
       elsif args[1] == 'delete'
-        client.deletekv
+        puts client.deletekv
       end
     end
   end
