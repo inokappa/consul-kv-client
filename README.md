@@ -28,7 +28,17 @@ Or install it yourself as:
 ### list
 
 ```sh
-bundle exec ./bin/consul_kv_client 127.0.0.1:8500
+bundle exec ./bin/consul_kv_client 127.0.0.1:8500 list
+```
+
+output.
+
+```sh
++-----+-------+
+| Key | Value |
++-----+-------+
+| foo | bar   |
++-----+-------+
 ```
 
 ### put
@@ -37,10 +47,22 @@ bundle exec ./bin/consul_kv_client 127.0.0.1:8500
 bundle exec ./bin/consul_kv_client 127.0.0.1:8500 put key value
 ```
 
+output.
+
+```sh
+true
+```
+
 ### delete
 
 ```sh
 bundle exec ./bin/consul_kv_client 127.0.0.1:8500 delete key
+```
+
+output.
+
+```sh
+true
 ```
 
 ## Development
