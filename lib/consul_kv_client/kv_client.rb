@@ -31,8 +31,17 @@ module ConsulKvClient
         end
       end
 
+      # {"CreateIndex":1115,"ModifyIndex":1115,"LockIndex":0,"Key":"foo","Flags":0,"Value":"YmFy"}
+      header = ["Key", "Value"]
+
+      #rows.each do |row|
+      #  ary = [header,row].transpose
+      #  h = Hash[*ary.flatten]
+      #  puts h.to_json
+      #end
+
       if rows != nil
-        table = Terminal::Table.new :headings => ['Key', 'Value'], :rows => rows
+        table = Terminal::Table.new :headings => header, :rows => rows
       end
     end
 
